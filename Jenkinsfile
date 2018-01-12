@@ -29,7 +29,7 @@ pipeline {
         }*/
 	stage('Generate docker image with the src folder') {
 	    steps {	    	
-	    	# This will search for a Dockerfile in the working directory and build the image to the local repository
+	    	// This will search for a Dockerfile in the working directory and build the image to the local repository
 		sh 'docker build .'
 	    }
 	}
