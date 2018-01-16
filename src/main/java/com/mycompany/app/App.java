@@ -18,4 +18,10 @@ public class App
         return message;
     }
 
+    private final String test(String a) {
+	return a;
+    }
+
+	    
+
 }
