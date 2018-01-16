@@ -19,7 +19,7 @@ public class App
     }
 
     private final String test(String a) {
-	return a;
+	return "Aa";
     }
 
 	    
