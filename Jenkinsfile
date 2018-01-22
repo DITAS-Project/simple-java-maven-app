@@ -11,6 +11,12 @@ pipeline {
 			steps {
 				sh 'mvn -B -DskipTests clean package'
 			}
+			post {
+				success {
+					archive "target/**/*.jar"
+				}
+			}
+			
 		}
 		stage('Test and Static analysis') {
             parallel {
