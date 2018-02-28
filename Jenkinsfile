@@ -1,10 +1,10 @@
 pipeline 
-	agent {
-		dockerfile {
-		    filename 'Dockerfile'
-		    args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
-	    }
-	}
+   agent {
+      dockerfile {
+          filename 'Dockerfile'
+          args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+       }
+   }
     agent {
         docker {
             image 'maven:3-alpine'
@@ -28,11 +28,11 @@ pipeline
             }
         }
         stage('Deploy') { 
-	        steps {	    	
-		        echo 'Generate docker image with the src folder '
-	    	    // This will search for a Dockerfile in the working directory and build the image to the local repository
-		        sh 'docker ps -a'
-	        }
-	    }
+           steps {          
+              echo 'Generate docker image with the src folder '
+              // This will search for a Dockerfile in the working directory and build the image to the local repository
+              sh 'docker ps -a'
+           }
+       }
     }
 }
