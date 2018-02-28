@@ -1,5 +1,6 @@
 FROM maven:3-alpine
 
+
 # Install Docker and dependencies
 RUN apk --update add \
   bash \
