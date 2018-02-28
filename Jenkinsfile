@@ -32,7 +32,7 @@ pipeline
            steps {          
               echo 'Execute a docker cmd to check reachability of docker binary'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
-              sh 'docker ps -a'
+              sh 'docker ps'
            }
        }
     }
