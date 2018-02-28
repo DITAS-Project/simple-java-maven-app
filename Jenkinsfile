@@ -1,5 +1,13 @@
 pipeline {
-    agent { dockerfile true }
+    /*agent { dockerfile true }*/
+	agent {
+	    dockerfile {
+		filename 'Dockerfile'
+	    }
+		docker {
+			args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+		}
+	}
     /*agent {
         docker {
             image 'maven:3-alpine'
