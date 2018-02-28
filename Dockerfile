@@ -1,4 +1,4 @@
-FROM maven:7-alpine
+FROM maven:3-alpine
 
 # Install Docker and dependencies
 RUN apk --update add \
