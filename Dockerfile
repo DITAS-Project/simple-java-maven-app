@@ -7,5 +7,5 @@ RUN apk --update add \
   ca-certificates \
   e2fsprogs \
   docker \
-  && chmod +x /usr/local/bin/wrapdocker \
   && rm -rf /var/cache/apk/*
+ 
