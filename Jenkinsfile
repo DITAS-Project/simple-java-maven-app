@@ -31,6 +31,8 @@ pipeline
         stage('Deploy') { 
            steps {          
               echo 'Execute a docker cmd to check reachability of docker binary'
+              sh 'whoami'
+              sh 'groups cloudsigma'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
               sh 'docker ps -a'
            }
