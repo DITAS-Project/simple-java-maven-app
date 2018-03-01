@@ -32,7 +32,7 @@ pipeline
            steps {          
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
-              sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
+              sh "docker build -t \"aitorf/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
               echo "Done"
               echo 'Retrieving Docker Hub password from /opt/aitorf-docker-hub.passwd...'
               // Get the Docker Hub password from a sahred volume. Slaves already have the password in there.
