@@ -43,7 +43,9 @@ pipeline
             script {
                 def password = new File('/opt/aitorf-docker-hub.passwd').text
             }
+              echo "pass1"
               echo "${password}"
+              echo "pass2"
               sh "docker login -u aitorf -p " + ${password}
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}"
