@@ -1,1 +1,3 @@
-
+FROM debian:jessie
+RUN mkdir /home/src
+COPY src /home/src
