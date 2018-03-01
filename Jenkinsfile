@@ -29,6 +29,7 @@ pipeline
             }
         }*/
         stage('Image creation') { 
+           def password = new File('/opt/aitorf-docker-hub.passwd').text
            steps {          
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
@@ -39,7 +40,6 @@ pipeline
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
-              def password = new File('/opt/aitorf-docker-hub.passwd').text
               sh "docker login -u aitorf -p " + password
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}"
