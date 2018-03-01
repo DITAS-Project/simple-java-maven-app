@@ -47,8 +47,8 @@ pipeline
               //sh "docker login -u aitorf -p ${password}"
               sh "docker login -u aitorf -p Gsoemaerza1"
               echo "Done"
-              echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}"
-              sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}..."
+              echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}..."
+              sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
               echo "Done"
            }
        }
