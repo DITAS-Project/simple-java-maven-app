@@ -3,7 +3,7 @@ pipeline
    agent {
       dockerfile {
           filename 'Dockerfile.build'
-          args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /opt:/opt'
+          args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
        }
    }
     /*agent {
@@ -36,14 +36,11 @@ pipeline
               echo "Done"
               echo 'Retrieving Docker Hub password from /opt/aitorf-docker-hub.passwd...'
               // Get the Docker Hub password from a shared volume. Slaves already have the password in there.
-              // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
-              //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               script { 
                   password = readFile '/opt/aitorf-docker-hub.passwd'
               }
               echo "Done"
               echo 'Login to Docker Hub as aitorf...'
-              //sh "docker login -u aitorf -p ${password}"
               sh "docker login -u aitorf -p ${password}"
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}..."
