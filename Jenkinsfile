@@ -38,7 +38,7 @@ pipeline
               // Get the Docker Hub password from a sahred volume. Slaves already have the password in there.
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
-              password = readFile '/opt/aitorf-docker-hub.passwd'
+              def password = readFile '/opt/aitorf-docker-hub.passwd'
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               sh "docker login -u aitorf -p " + password
               echo "Done"
