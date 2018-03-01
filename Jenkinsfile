@@ -39,7 +39,7 @@ pipeline
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               script { 
-                  def password = readFile '/opt/aitorf-docker-hub.passwd'
+                  password = readFile '/opt/aitorf-docker-hub.passwd'
               }
               echo "Done"
               echo 'Login to Docker Hub as aitorf...'
