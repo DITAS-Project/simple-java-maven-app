@@ -42,7 +42,6 @@ pipeline
               script { 
                   def password = readFile '/opt/aitorf-docker-hub.passwd'
               }
-              echo "${password}"
               echo "Done"
               echo 'Login to Docker Hub as aitorf...'
               //sh "docker login -u aitorf -p ${password}"
