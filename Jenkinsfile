@@ -39,7 +39,9 @@ pipeline
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
-   sh "ls -al /opt"
+              sh "ls -al /opt"
+              fileExists '/opt/aitorf-docker-hub.passwd'
+
             script {
                 def password = new File('/opt/aitorf-docker-hub.passwd').text
             }
