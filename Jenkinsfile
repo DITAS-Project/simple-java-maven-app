@@ -3,7 +3,7 @@ pipeline
    agent {
       dockerfile {
           filename 'Dockerfile.build'
-          args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+          args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /opt:/opt'
        }
    }
     /*agent {
@@ -33,6 +33,8 @@ pipeline
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
               sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
+              sh "docker login -u aitorf -p $(< /opt/aitorf-docker-hub.passwd)"
+              sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
            }
        }
     }
