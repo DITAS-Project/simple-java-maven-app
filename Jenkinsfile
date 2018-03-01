@@ -40,9 +40,10 @@ pipeline
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               sh "ls -al /opt"
-              echo fileExists '/opt/aitorf-docker-hub.passwd'
 
             script {
+                def exists = fileExists '/opt/aitorf-docker-hub.passwd'
+                 print exists
                 def password = new File('/opt/aitorf-docker-hub.passwd').text
             }
               echo "pass1"
