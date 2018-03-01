@@ -13,7 +13,7 @@ pipeline
         }
     }*/
     stages {
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
@@ -27,12 +27,12 @@ pipeline
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
+        }*/
         stage('Image creation') { 
            steps {          
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
-              sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact"
+              sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact -"
            }
        }
     }
