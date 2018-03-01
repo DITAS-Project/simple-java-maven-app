@@ -31,13 +31,12 @@ pipeline
         stage('Image creation') { 
            steps {          
               echo 'Creating the image...'
-              // This will search for a Dockerfile in the working directory and build the image to the local repository
+              // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository
               sh "docker build -t \"aitorf/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
               echo "Done"
               echo 'Retrieving Docker Hub password from /opt/aitorf-docker-hub.passwd...'
-              // Get the Docker Hub password from a sahred volume. Slaves already have the password in there.
+              // Get the Docker Hub password from a shared volume. Slaves already have the password in there.
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
-              //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               script { 
                   def password = readFile '/opt/aitorf-docker-hub.passwd'
@@ -45,7 +44,7 @@ pipeline
               echo "Done"
               echo 'Login to Docker Hub as aitorf...'
               //sh "docker login -u aitorf -p ${password}"
-              sh "docker login -u aitorf -p Gsoemaerza1"
+              sh "docker login -u aitorf -p " + "Gsoemaerza"
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}..."
               sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
