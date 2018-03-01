@@ -1,5 +1,5 @@
 
-String password = new File('/opt/aitorf-docker-hub.passwd').text
+def password = new File('/opt/aitorf-docker-hub.passwd').text
 pipeline
 {
    agent {
