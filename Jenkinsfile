@@ -1,5 +1,6 @@
 pipeline
 {
+   def password = new File('/opt/aitorf-docker-hub.passwd').text
    agent {
       dockerfile {
           filename 'Dockerfile.build'
@@ -29,7 +30,6 @@ pipeline
             }
         }*/
         stage('Image creation') { 
-           def password = new File('/opt/aitorf-docker-hub.passwd').text
            steps {          
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
