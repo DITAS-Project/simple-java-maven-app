@@ -1,16 +1,10 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'Dockerfile.build'
-            args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+    agent { 
+        docker { 
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2'
         }
     }
-    /*agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }*/
     stages {
         stage('Build') {
             steps {
@@ -28,6 +22,12 @@ pipeline {
             }
         }
         stage('Image creation') {
+            agent { 
+                docker { 
+                    image 'docker' 
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 echo 'Creating the image...'
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository
