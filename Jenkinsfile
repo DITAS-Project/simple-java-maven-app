@@ -37,7 +37,7 @@ pipeline
               echo 'Retrieving Docker Hub password from /opt/aitorf-docker-hub.passwd...'
               // Get the Docker Hub password from a shared volume. Slaves already have the password in there.
               script { 
-                  password = readFile '/opt/aitorf-docker-hub.passwd'
+                  password = readFile '/opt/aitorf-docker-hub.passwd2'
               }
               echo "Done"
               echo 'Login to Docker Hub as aitorf...'
