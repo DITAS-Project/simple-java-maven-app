@@ -40,17 +40,11 @@ pipeline
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               sh "ls -al /opt"
-              script {
-                  def exists = fileExists '/opt/aitorf-docker-hub.passwd'
-                  print exists
-                  def password = readFile '/opt/aitorf-docker-hub.passwd'
-                 
+              script { 
+                  def password = readFile '/opt/aitorf-docker-hub.passwd'                 
                   print password
               }
-              echo "pass1"
-              echo "${password}"
-              echo "pass2"
-              sh "docker login -u aitorf -p " + ${password}
+              sh "docker login -u aitorf -p ${password}"
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}"
               sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}..."
