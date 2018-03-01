@@ -34,16 +34,17 @@ pipeline
               // This will search for a Dockerfile in the working directory and build the image to the local repository
               sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
               echo "Done"
-              echo 'Login to Docker Hub as aitorf...'
+              echo 'Retrieving Docker Hub password from /opt/aitorf-docker-hub.passwd...'
               // Get the Docker Hub password from a sahred volume. Slaves already have the password in there.
               // TODO - Hacer que los dos excalvos la tengan, ahora solo la tiene el 1
               //String password = new File('/opt/aitorf-docker-hub.passwd').text
               //sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
-              sh "ls -al /opt"
               script { 
-                  def password = readFile '/opt/aitorf-docker-hub.passwd'                 
-                  print password
+                  def password = readFile '/opt/aitorf-docker-hub.passwd'
               }
+              echo ${password}
+              echo "Done"
+              echo 'Login to Docker Hub as aitorf...'
               sh "docker login -u aitorf -p ${password}"
               echo "Done"
               echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}"
