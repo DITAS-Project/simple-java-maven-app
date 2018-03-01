@@ -33,7 +33,7 @@ pipeline
               echo 'Creating the image...'
               // This will search for a Dockerfile in the working directory and build the image to the local repository
               sh "docker build -t \"simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
-              sh "docker login -u aitorf -p $(< /opt/aitorf-docker-hub.passwd)"
+              sh "docker login -u aitorf -p \$(< /opt/aitorf-docker-hub.passwd)"
               sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
            }
        }
