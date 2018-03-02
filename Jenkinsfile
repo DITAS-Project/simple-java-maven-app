@@ -2,7 +2,9 @@ pipeline {
     agent {
         dockerfile {
             filename 'Dockerfile.build'
-            args '-u 0 -v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+            // TODO esta caché debería ser por workspace, no por usuario, dos builds maven compartirían cache aquí!
+            //args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     /*agent {
