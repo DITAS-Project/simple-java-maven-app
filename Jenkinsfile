@@ -43,8 +43,7 @@ pipeline {
                 }
                 echo "Done"
                 echo 'Login to Docker Hub as aitorf...'
-                // docker login requieres sudo (https://docs.docker.com/engine/reference/commandline/login/#extended-description)
-                sh "sudo docker login -u aitorf -p ${password}"
+                sh "docker login -u aitorf -p ${password}"
                 echo "Done"
                 echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}..."
                 sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
