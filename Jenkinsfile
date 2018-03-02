@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Image creation ') {
+        stage('Image creation') {
             steps {
                 echo 'Creating the image...'
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository
