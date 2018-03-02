@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Image creation') {
             steps {
-                echo 'Creating the image...'
+                echo 'Creating the image... '
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository
                 sh "docker build -t \"aitorf/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
                 echo "Done"
