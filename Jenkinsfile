@@ -35,7 +35,7 @@ pipeline {
                 // The Dockerfile.artifact copies the code into the image and run the jar generation. 
                 echo 'Creating the image...'
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository 
-                sh "docker build -t \"ditas/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
+                sh "docker build -t \"ditas/simple-java-maven-app:latest\" -f Dockerfile.artifact ."
                 echo "Done"
                 echo 'Retrieving Docker Hub password from /opt/ditas-docker-hub.passwd...'
                 // Get the password from a file. This reads the file from the host, not the container. Slaves already have the password in there.
@@ -46,8 +46,8 @@ pipeline {
                 echo 'Login to Docker Hub as ditasgeneric...'
                 sh "docker login -u ditasgeneric -p ${password}"
                 echo "Done"
-                echo "Pushing the image ditas/simple-java-maven-app:${env.BUILD_ID}..."
-                sh "docker push ditas/simple-java-maven-app:${env.BUILD_ID}"
+                echo "Pushing the image ditas/simple-java-maven-app:latest..."
+                sh "docker push ditas/simple-java-maven-app:latest"
                 echo "Done"
             }
         }
@@ -58,6 +58,7 @@ pipeline {
                 // Staging environment: 31.171.247.162
                 // Private key for ssh: /opt/keypairs/ditas-testbed-keypair.pem
                 sh 'ssh -i /opt/keypairs/ditas-testbed-keypair.pem cloudsigma@31.171.247.162 sudo docker ps'
+                sh 'ssh -i /opt/keypairs/ditas-testbed-keypair.pem cloudsigma@31.171.247.162 sudo docker run -d ditas/simple-java-maven-app:latest'
             }
         }
     }
