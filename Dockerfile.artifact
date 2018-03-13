@@ -4,7 +4,8 @@ FROM maven:3.5.3-jdk-8
 WORKDIR app
 
 # Copy the src code into the app directory of the image
-COPY src/* ./
+COPY src ./
+COPY pom.xml ./
 
 # Build the java app with maven
 RUN mvn -B -DskipTests clean package
