@@ -11,7 +11,7 @@ pipeline {
                     //args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock' 
                     // TODO cache is not working because /root is not writable by cloudsigma (1000) user that jenkins is using to connecto to the container
                     // -u 0 works but arises other problems like asigning 
-                    args '-v "$HOME/.m2":/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+                    args '-v "$HOME/.m2":/root/.m2'
                 }
             }
             steps {
@@ -22,6 +22,7 @@ pipeline {
                 // Run the tests (we don't use a different stage for improving the performance, another stage would mean another agent)
                 sh 'mvn test'
             }
+            // TODO stop if test fails!
             post {
                 always {
                     // Record the jUnit test
@@ -52,6 +53,7 @@ pipeline {
             }
         }
         stage('Image deploy') {
+            // TO-DO avoid downloading the source from git again, not neccessary
             agent any
             steps {
                 echo 'to-do'
