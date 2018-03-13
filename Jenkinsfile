@@ -47,6 +47,8 @@ pipeline {
             }
         }
         stage('Deployment') {
+            // Get out of the container where execution was taking place until now
+            agent any
             steps {
                 echo 'Deploying image to Staging environment'
                 // Staging IP: 31.171.247.162
