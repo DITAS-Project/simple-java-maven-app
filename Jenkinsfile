@@ -45,8 +45,8 @@ pipeline {
                 echo 'Login to Docker Hub as ditasgeneric...'
                 sh "docker login -u ditasgeneric -p ${password}"
                 echo "Done"
-                echo "Pushing the image ditasgeneric/simple-java-maven-app:${env.BUILD_ID}..."
-                sh "docker push ditasgeneric/simple-java-maven-app:${env.BUILD_ID}"
+                echo "Pushing the image ditas/simple-java-maven-app:${env.BUILD_ID}..."
+                sh "docker push ditas/simple-java-maven-app:${env.BUILD_ID}"
                 echo "Done"
             }
         }
