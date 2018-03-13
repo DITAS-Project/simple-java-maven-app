@@ -30,7 +30,7 @@ pipeline {
                 // TODO tengo que pasar el JAR que se ha creado en el build andetro de esta img. No puedo crearlo de nuevo porque estoy con agent any. Pero puedo buldearlo de nuevo en el propio Dockerfile.artifact como comando!
                 echo 'Creating the image...'
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository 
-                sh "docker build -t \"aitorf/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
+                sh "docker build -t \"ditas/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
                 echo "Done"
                 echo 'Retrieving Docker Hub password from /opt/ditas-docker-hub.passwd...'
                 // Get the password from a file. This reads the file from the host, not the container. Slaves already have the password in there.
