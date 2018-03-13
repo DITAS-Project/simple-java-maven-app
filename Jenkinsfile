@@ -42,12 +42,17 @@ pipeline {
                     password = readFile '/opt/ditas-docker-hub.passwd'
                 }
                 echo "Done"
-                echo 'Login to Docker Hub as aitorf...'
-                sh "docker login -u aitorf -p ${password}"
+                echo 'Login to Docker Hub as ditasgeneric...'
+                sh "docker login -u ditasgeneric -p ${password}"
                 echo "Done"
-                echo "Pushing the image aitorf/simple-java-maven-app:${env.BUILD_ID}..."
-                sh "docker push aitorf/simple-java-maven-app:${env.BUILD_ID}"
+                echo "Pushing the image ditasgeneric/simple-java-maven-app:${env.BUILD_ID}..."
+                sh "docker push ditasgeneric/simple-java-maven-app:${env.BUILD_ID}"
                 echo "Done"
+            }
+        }
+        stage('Image deploy') {
+            steps {
+                echo 'to-do'
             }
         }
     }
