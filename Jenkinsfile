@@ -23,7 +23,7 @@ pipeline {
                 echo 'Creating the image...'
                 // This will search for a Dockerfile in the src folder and will build the image to the local repository
                 // Using latest tag to override tha newest image in the hub
-                sh "cd src; docker build -t \"ditas/data-utility-refinement:latest\" ."
+                sh "docker build -t \"ditas/simple-java-maven-app:latest\" Dockerfile.artifact"
                 echo "Done"
             }
         }
@@ -40,9 +40,9 @@ pipeline {
                 echo 'Login to Docker Hub as ditasgeneric...'
                 sh "docker login -u ditasgeneric -p ${password}"
                 echo "Done"
-                echo "Pushing the image ditas/data-utility-refinement:latest..."
+                echo "Pushing the image ditas/simple-java-maven-app:latest..."
                 // Push the image to DockerHub
-                sh "docker push ditas/data-utility-refinement:latest"
+                sh "docker push ditas/simple-java-maven-app:latest"
                 echo "Done"
             }
         }
