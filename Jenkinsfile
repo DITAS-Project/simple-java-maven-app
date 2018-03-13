@@ -1,4 +1,5 @@
 pipeline {
+    agent none
     stages {
         stage('Build - test') {
         // Ya no necesito todo esto no? Puedo usar una imagen estandar.
