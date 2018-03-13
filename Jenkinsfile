@@ -5,7 +5,7 @@ pipeline {
             // TODO esta caché debería ser por workspace, no por usuario, dos builds maven compartirían cache aquí! 
             //args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock' 
             //TODO no me va la cache con ~, habrá que poner una variable de entorno del workspace
-            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /tmp/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     /*agent {
@@ -43,7 +43,7 @@ pipeline {
                 }
                 echo "Done"
                 echo 'Login to Docker Hub as ditasgeneric...'
-                sh "sudo docker login -u ditasgeneric -p ${password}"
+                sh "docker login -u ditasgeneric -p ${password}"
                 echo "Done"
                 echo "Pushing the image ditasgeneric/simple-java-maven-app:${env.BUILD_ID}..."
                 sh "docker push ditasgeneric/simple-java-maven-app:${env.BUILD_ID}"
