@@ -46,9 +46,12 @@ pipeline {
                 echo "Done"
             }
         }
-        stage('Deployment ') {
+        stage('Deployment') {
             steps {
-                echo 'TO-DO'
+                echo 'Deploying image to Staging environment'
+                // Staging IP: 31.171.247.162
+                // Private Key to SSH located here: /opt/keypairs/ditas-testbed-keypair.pem-
+                sh 'ssh -i /opt/keypairs/ditas-testbed-keypair.pem  cloudsigma@31.171.247.162 docker ps'
             }
         }
     }
