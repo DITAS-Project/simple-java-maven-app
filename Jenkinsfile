@@ -52,6 +52,7 @@ pipeline {
             }
         }
         stage('Image deploy') {
+            agent any
             steps {
                 echo 'to-do'
                 // Staging environment: 31.171.247.162
