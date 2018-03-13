@@ -5,7 +5,7 @@ pipeline {
         stage('Build - test') {
         // Ya no necesito todo esto no? Puedo usar una imagen estandar.
             agent {
-                dockerfile {
+                docker {
                     image 'maven:3.5.3-jdk-8'
                     // TODO esta caché debería ser por workspace, no por usuario, dos builds maven compartirían cache aquí!
                     //args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock' 
