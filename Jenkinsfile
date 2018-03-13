@@ -1,18 +1,19 @@
 pipeline {
     stages {
         stage('Build - test') {
-			agent {
-				dockerfile {
-					filename 'Dockerfile.build'
-					// TODO esta caché debería ser por workspace, no por usuario, dos builds maven compartirían cache aquí!
-					//args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock' 
-					//TODO no me va la cache con ~, habrá que poner una variable de entorno del workspace
-					args '-u 0 -v "$HOME/.m2":/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
-				}
-			}
+        // Ya no necesito todo esto no? Puedo usar una imagen estandar.
+            agent {
+                dockerfile {
+                    filename 'Dockerfile.build'
+                    // TODO esta caché debería ser por workspace, no por usuario, dos builds maven compartirían cache aquí!
+                    //args '-u 0 -v ~/.m2:~/.m2 -v /var/run/docker.sock:/var/run/docker.sock' 
+                    //TODO no me va la cache con ~, habrá que poner una variable de entorno del workspace
+                    args '-u 0 -v "$HOME/.m2":/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 sh 'mvn -B -DskipTests clean package'
-				archiveArtifacts 'target/*.jar'
+                archiveArtifacts 'target/*.jar'
                 sh 'mvn test'
             }
             post {
@@ -22,9 +23,9 @@ pipeline {
             }
         }
         stage('Image creation') {
-			agent any
+            agent any
             steps {
-				// TODO tengo que pasar el JAR que se ha creado en el build andetro de esta img. No puedo crearlo de nuevo porque estoy con agent any. Pero puedo buldearlo de nuevo en el propio Dockerfile.artifact como comando!
+                // TODO tengo que pasar el JAR que se ha creado en el build andetro de esta img. No puedo crearlo de nuevo porque estoy con agent any. Pero puedo buldearlo de nuevo en el propio Dockerfile.artifact como comando!
                 echo 'Creating the image...'
                 // This will search for a Dockerfile.artifact in the working directory and build the image to the local repository 
                 sh "docker build -t \"aitorf/simple-java-maven-app:${env.BUILD_ID}\" -f Dockerfile.artifact ."
