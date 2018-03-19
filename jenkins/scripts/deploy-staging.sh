@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Staging environment: 31.171.247.162
-# Private key for ssh: /opt/keypairs/ditas-testbed-keypair.pem
+# Private key for ssh: /opt/keypairs/ditas-testbed-keypair.pem 
 
 # TODO state management? We are killing without careing about any operation the conainer could be doing.
 
