@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Staging environment: 31.171.247.162
 # Private key for ssh: /opt/keypairs/ditas-testbed-keypair.pem
 
