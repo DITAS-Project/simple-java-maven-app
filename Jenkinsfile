@@ -30,7 +30,7 @@ pipeline {
                     args '-v "$HOME/.m2":/root/.m2'
                 }
             }
-            steps {
+            steps { 
                 sh 'mvn -B -DskipTests clean package'
                 // Lets make the JAR available from the artifacts tab in Jenkins
                 archiveArtifacts 'target/*.jar'
