@@ -19,7 +19,7 @@ pipeline {
 		)
 	}
 	failure {
-		echo FAILURE - TODO MAL'
+		echo 'FAILURE - TODO MAL'
 		emailext (
 			subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 			body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
