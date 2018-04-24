@@ -6,7 +6,7 @@ pipeline {
 	  	echo 'TESTTEST'
 		emailext (
 			subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: '''${SCRIPT, template="my-email.template"}''',
+			body: '''${SCRIPT, template="success.template"}''',
 			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
       }
