@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage ('Notification e-mail') {
       steps {
-	  	echo 'TESTTEST'
+	  	echo 'Test'
 		//sh 'test.sh'
       }
     }
   }
   post {
 	success {
-		echo 'Success!'
+		echo 'Sending success e-mail notification'
 		emailext (
 			subject: "SUCCESS: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 			body: '''${SCRIPT, template="success.template"}''',
@@ -18,33 +18,16 @@ pipeline {
 		)
 	}
 	failure {
-		echo 'FAILURE - TODO MAL'
+		echo 'Sending failure e-mail notification'
 		emailext (
 			subject: "FAILURE: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 			body: '''${SCRIPT, template="failure.template"}''',
 			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
 	}
-}
-}
-
-/*
-pipeline {
-  agent any
-  stages {
-    stage ('Notification e-mail') {
-      steps {
-	  	echo 'TESTTEST'
-		emailext (
-			subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: '''${SCRIPT, template="success.template"}''',
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-		)
-      }
-    }
   }
 }
-*/
+
 /*
 pipeline {
     // Mandatory to use per-stage agents
