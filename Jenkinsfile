@@ -10,7 +10,7 @@ pipeline {
   }
   post {
 	success {
-		echo 'Sending success e-mail notification'
+		echo 'Sending success e-mail notification' 
 		emailext (
 			subject: "SUCCESS: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 			body: '''${SCRIPT, template="success.template"}''',
@@ -28,7 +28,7 @@ pipeline {
   }
 }
 
-/* 
+/*
 pipeline {
     // Mandatory to use per-stage agents
     agent none
