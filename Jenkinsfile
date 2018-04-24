@@ -4,7 +4,7 @@ pipeline {
     stage ('Notification e-mail') {
       steps {
 	  	echo 'TESTTEST'
-		sh 'test.sh'
+		//sh 'test.sh'
       }
     }
   }
