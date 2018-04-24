@@ -8,15 +8,15 @@ pipeline {
             subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
             body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
               <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            recipientProviders: [[$class: 'DevelopersRecipientProvider']]  
+            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         )
       }
     }
   }
 }
 /*
-pipeline { 
-    // Mandatory to use per-stage agents 
+pipeline {
+    // Mandatory to use per-stage agents  
     agent none
     stages {
         stage('Build - test') {
@@ -31,7 +31,7 @@ pipeline {
                     args '-v "$HOME/.m2":/root/.m2'
                 }
             }
-            steps { 
+            steps {
                 sh 'mvn -B -DskipTests clean package'
                 // Lets make the JAR available from the artifacts tab in Jenkins
                 archiveArtifacts 'target/*.jar'
