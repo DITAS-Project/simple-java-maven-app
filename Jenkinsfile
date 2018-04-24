@@ -4,7 +4,6 @@ pipeline {
     stage ('Send email') {
       steps {
         emailext (
-            //to: "${env.DEFAULT_RECIPIENTS}",
 			from: "env.DEFAULT_RECIPIENTS",
 			replyTo: "env.DEFAULT_RECIPIENTS",
             subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
