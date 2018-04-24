@@ -3,16 +3,23 @@ pipeline {
   stages {
     stage ('Notification e-mail') {
       steps {
-	  	echo 'Sending notification email'
-        emailext (
-            subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-              <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        )
+	  	echo 'TESTTEST'
       }
     }
   }
+  post {
+	success {
+		emailext (
+			subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+			body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+			  <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+		)
+	}
+	failure {
+		echo 'pipeline failed, at least one step failed'
+	}
+}
 }
 /*
 pipeline {
