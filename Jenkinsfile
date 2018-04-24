@@ -4,30 +4,14 @@ pipeline {
     stage ('Notification e-mail') {
       steps {
 	  	echo 'TESTTEST'
-		sh 'test.sh'
+		emailext (
+			subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+			body: '''${SCRIPT, template="my-email.template"}''',
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+		)
       }
     }
   }
-  post {
-	success {
-		echo 'SUCCESS - TODO OK'
-		emailext (
-			subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-			  <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-		)
-	}
-	failure {
-		echo 'FAILURE - TODO MAL'
-		emailext (
-			subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-			  <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-		)
-	}
-}
 }
 /*
 pipeline {
