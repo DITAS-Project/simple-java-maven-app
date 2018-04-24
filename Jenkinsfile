@@ -18,8 +18,8 @@ pipeline {
     // Mandatory to use per-stage agents
     agent none
     stages {
-        stage('Build - test') { 
-        // Ya no necesito todo esto no? Puedo usar una imagen estandar.
+        stage('Build - test') {
+        // Ya no necesito todo esto no? Puedo usar una imagen estandar. 
             agent {
                 docker {
                     image 'maven:3.5.3-jdk-8'
