@@ -4,9 +4,7 @@ pipeline {
 	stage('Image deploy') {
 		agent any
 		steps {
-			echo 'hey'
-			sh 'ifconfig'
-			sh './jenkins/scripts/deploy-staging.sh'
+		   sh './jenkins/scripts/deploy-staging.sh'
 		}
 	}
   }
