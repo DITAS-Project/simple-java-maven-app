@@ -4,7 +4,7 @@ pipeline {
     stage('Dredd API testing') {
       agent any
       steps {
-        // sh './jenkins/scripts/run-dredd.sh'
+        // sh  './jenkins/scripts/run-dredd.sh'
         sh 'dredd definition_test.yaml http://31.171.247.162:50003'
       }
     }
