@@ -1,30 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage ('Notification e-mail') {
-      steps {
-	  	echo 'Test'
-		//sh 'test.sh'
-      }
-    }
+	stage('Image deploy') {
+				agent any
+				options {
+					skipDefaultCheckout true
+				}
+				steps {
+					sh './jenkins/scripts/deploy-staging.sh'
+	}
   }
-  post {
-	success {
-		echo 'Sending success e-mail notification' 
-		emailext (
-			subject: "SUCCESS: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: '''${SCRIPT, template="success.template"}''',
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-		)
-	}
-	failure {
-		echo 'Sending failure e-mail notification'
-		emailext (
-			subject: "FAILURE: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-			body: '''${SCRIPT, template="failure.template"}''',
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-		)
-	}
   }
 }
 
