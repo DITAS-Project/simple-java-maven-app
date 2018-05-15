@@ -5,8 +5,7 @@ pipeline {
 		agent any
 		steps {
 		   sh './jenkins/scripts/deploy-staging.sh > commandResult2'
-	           result = readFile('commandResult2').trim()
-	           echo result
+	           echo readFile('commandResult2').trim()
 		}
 	}
   }
