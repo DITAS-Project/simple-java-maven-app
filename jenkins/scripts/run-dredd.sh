@@ -11,6 +11,7 @@
 
 # Run dredd 
 echo "testtesttesttest"
+pwd
 cat ../../Dockerfile.artifact
 # dredd /home/cloudsigma/dreddtest/apimattia.yaml http://31.171.247.162:50003
 
