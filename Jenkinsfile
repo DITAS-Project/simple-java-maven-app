@@ -12,7 +12,7 @@ pipeline {
 
 /*
 pipeline {
-    // Mandatory to use  per-stage agents
+    // Mandatory to use per-stage agents
     agent none
     stages {
         stage('Build - test') {
