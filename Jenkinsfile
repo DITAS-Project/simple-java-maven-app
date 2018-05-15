@@ -16,7 +16,7 @@ pipeline {
     agent none
     stages {
         stage('Build - test') {
-        // Ya no necesito  todo esto no? Puedo usar una imagen estandar.
+        // Ya no necesito todo esto no? Puedo usar una imagen estandar.
             agent {
                 docker {
                     image 'maven:3.5.3-jdk-8'
