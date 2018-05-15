@@ -4,7 +4,7 @@ pipeline {
 	stage('Image deploy') {
 		agent any
 		steps {
-		   sh './jenkins/scripts/deploy-staging.sh'
+		   sh './jenkins/scripts/run-dredd.sh'
 		}
 	}
   }
