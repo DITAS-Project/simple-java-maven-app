@@ -2,14 +2,14 @@ pipeline {
   agent any
   stages {
 	stage('Image deploy') {
-				agent any
-				options {
-					skipDefaultCheckout true
-				}
-				steps {
-					sh './jenkins/scripts/deploy-staging.sh'
+		agent any
+		options {
+			skipDefaultCheckout true
+		}
+		steps {
+			sh './jenkins/scripts/deploy-staging.sh'
+		}
 	}
-  }
   }
 }
 
