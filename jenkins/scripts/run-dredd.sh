@@ -9,6 +9,7 @@ ssh -i /opt/keypairs/ditas-testbed-keypair.pem cloudsigma@31.171.247.162 << 'END
 # Create the symbolic link in order to use 'node' as PATH variable
 # sudo ln -s /home/cloudsigma/.nvm/versions/node/v8.11.1/bin/node /usr/bin/node
 
+echo "heyyyyyyyyyyyyy" 
 # Run dredd from the real path
 # /home/cloudsigma/.nvm/versions/node/v8.11.1/bin/dredd /home/cloudsigma/dreddtest/apimattia.yaml http://31.171.247.162:50003
 dredd /home/cloudsigma/dreddtest/apimattia.yaml http://31.171.247.162:50003
