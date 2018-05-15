@@ -4,7 +4,6 @@ pipeline {
 	stage('Image deploy') {
 		agent any
 		steps {
-		   sh 'pwd'
 		   sh './jenkins/scripts/deploy-staging.sh'
 		}
 	}
