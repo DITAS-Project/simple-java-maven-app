@@ -4,8 +4,8 @@ pipeline {
 	stage('Image deploy') {
 		agent any
 		steps {
-		   sh './jenkins/scripts/deploy-staging.sh > commandResult'
-	           result = readFile('commandResult').trim()
+		   sh './jenkins/scripts/deploy-staging.sh > commandResult2'
+	           result = readFile('commandResult2').trim()
 	           echo result
 		}
 	}
