@@ -10,7 +10,7 @@ pipeline {
 		     script: './jenkins/scripts/deploy-staging.sh',
 		     returnStdout: true
 		   ).trim()
-		   echo RESULTADO
+		   echo "${GIT_COMMIT_EMAIL}"
 		}
 	}
   }
