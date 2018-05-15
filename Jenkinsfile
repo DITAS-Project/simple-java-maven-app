@@ -33,7 +33,7 @@ pipeline {
                 // Lets make  the JAR available from the artifacts tab in Jenkins
                 archiveArtifacts 'target/*.jar'
 
-                // Run the tests (we don't use a different stage for improving the performance, another stage would mean another agent)
+                // Run  the tests (we don't use a different stage for improving the performance, another stage would mean another agent)
                 sh 'mvn test'
             }
             // TODO stop if test fails!
