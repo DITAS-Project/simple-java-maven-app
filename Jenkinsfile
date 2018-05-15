@@ -1,12 +1,12 @@
 pipeline {
   agent none
   stages {
-	stage('Image deploy') {
-		agent any
-		steps {
-		   sh './jenkins/scripts/run-dredd.sh'
-		}
-	}
+    stage('Image deploy') {
+      agent any
+      steps {
+        sh './jenkins/scripts/run-dredd.sh'
+      }
+    }
   }
 }
 
