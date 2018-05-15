@@ -4,13 +4,7 @@ pipeline {
 	stage('Image deploy') {
 		agent any
 		steps {
-		   // sh './jenkins/scripts/deploy-staging.sh > commandResult2'
-	           // echo readFile('commandResult2').trim()
-BUILD_FULL = sh (
-    script: "./jenkins/scripts/deploy-staging.sh",
-    returnStatus: true
-) == 0
-echo "Build full flag: ${BUILD_FULL}"
+		   sh './jenkins/scripts/deploy-staging.sh'
 		}
 	}
   }
