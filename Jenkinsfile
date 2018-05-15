@@ -6,12 +6,11 @@ pipeline {
 		steps {
 		   // sh './jenkins/scripts/deploy-staging.sh > commandResult2'
 	           // echo readFile('commandResult2').trim()
-		   resresres = sh (
-		     script: './jenkins/scripts/deploy-staging.sh',
-		     returnStdout: true
-		   ).trim()
-		   echo "Git committer email: ${resresres}"
-			echo "BYEBYE"
+BUILD_FULL = sh (
+    script: "./jenkins/scripts/deploy-staging.sh",
+    returnStatus: true
+) == 0
+echo "Build full flag: ${BUILD_FULL}"
 		}
 	}
   }
