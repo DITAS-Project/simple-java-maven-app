@@ -7,7 +7,6 @@ pipeline {
 		   sh './jenkins/scripts/deploy-staging.sh > commandResult'
 	           result = readFile('commandResult').trim()
 	           echo result
-		   echo "end"
 		}
 	}
   }
